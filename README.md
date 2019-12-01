@@ -15,11 +15,13 @@ To add your solution, add a directory with your name inside the day and put your
   - README.md
   - resource.txt
   + en0
-    - solution.py
+    - part_one.py
+    - part_two.py
     - sample_resource.txt
     - Makefile
   + kunningklown
-    - solution.py
+    - part_one.py
+    - part_two.py
     - sample_resource.txt
     - Makefile
 ```
