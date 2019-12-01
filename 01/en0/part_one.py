@@ -35,7 +35,6 @@ class FuelCalculator:
 
 def main(resource_path):
     fc = FuelCalculator(resource_path)
-    fc.set_fuel_calculation(compute_module_fuel)
     print(fc.compute_total_fuel())
 
 
