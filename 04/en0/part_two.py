@@ -7,7 +7,7 @@ from part_one import (
     SixDigitValidator,
     NeverDecreaseValidator)
 
-class ImprovedTwoAdjacentDigetsValidator(IValidator):
+class ImprovedTwoAdjacentDigitsValidator(IValidator):
     def __init__(self):
         self._last = ""
         self._ajacent_counts = {}
@@ -31,7 +31,7 @@ def main(puzzle_range):
     validator.add_validator(IntegerValidator())
     validator.add_validator(SixDigitValidator())
     validator.add_validator(NeverDecreaseValidator())
-    validator.add_validator(ImprovedTwoAdjacentDigetsValidator())
+    validator.add_validator(ImprovedTwoAdjacentDigitsValidator())
 
     bottom, top = puzzle_range.split("-")
     running_total = 0

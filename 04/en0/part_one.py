@@ -60,7 +60,7 @@ class SixDigitValidator(IValidator):
         return self._count < 7
 
     def finalize(self):
-        return self._count
+        return self._count == 6
 
 
 class NeverDecreaseValidator(IValidator):
@@ -81,7 +81,7 @@ class NeverDecreaseValidator(IValidator):
         return True
 
 
-class TwoAdjacentDigetsValidator(IValidator):
+class TwoAdjacentDigitsValidator(IValidator):
     def __init__(self):
         self._last = ""
         self._found = False
@@ -105,7 +105,7 @@ def main(puzzle_range):
     validator.add_validator(IntegerValidator())
     validator.add_validator(SixDigitValidator())
     validator.add_validator(NeverDecreaseValidator())
-    validator.add_validator(TwoAdjacentDigetsValidator())
+    validator.add_validator(TwoAdjacentDigitsValidator())
 
     bottom, top = puzzle_range.split("-")
     running_total = 0
