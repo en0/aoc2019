@@ -27,4 +27,3 @@ To add your solution, add a directory with your name inside the day and put your
 ```
 
 The make file is optional but it is covienent for running test data vs actual data.
-
