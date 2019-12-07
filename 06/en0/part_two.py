@@ -17,15 +17,18 @@ class Map2(Map):
         orig_to_dest = reversed(self.path_to_origin(dest))
         s_half = list()
         d_half = list()
+        lca = None
         for s, d in zip_longest(orig_to_source, orig_to_dest):
             if s is d:
                 continue
+            elif lca is None:
+                lca = s.parent
             if s is not None:
-                s_half.append(s)
+                s_half.insert(0, s)
             if d is not None:
                 d_half.append(d)
 
-        return s_half + d_half
+        return s_half + [lca] + d_half
 
     def path_to_origin(self, node: Node):
         """Find the route from the given node to the origin
@@ -43,7 +46,10 @@ def main(resource_path):
     catalog = Map2.load(resource_path)
     you = catalog.get_node("YOU")
     san = catalog.get_node("SAN")
-    print(len(catalog.find_route(you, san)))
+    # Compute from you.parent to san because we are only counting
+    # orbit transfers and we will not need to transfer to our
+    # parent.
+    print(len(catalog.find_route(you.parent, san)))
 
 if __name__ == "__main__":
     main(argv[-1])
