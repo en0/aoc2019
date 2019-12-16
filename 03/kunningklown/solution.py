@@ -1,4 +1,4 @@
-'''
+"""
 read file
 split data on line return file_line1 file_line2
 split data on comma for both lines
@@ -6,7 +6,8 @@ iterate through each instruction for each line to create wire1 wire2
 if points go from (0,0) to (0,3) line = (0,0),(0,1),(0,2),(0,3)
 if r,l,u,d add number
 
-'''
+"""
+
 
 class TraceCircuit():
     def __init__(self):
@@ -17,6 +18,7 @@ class TraceCircuit():
         self._file_line_1 = []
         self._file_line_2 = []
         self._file_data = []
+        self._wires = []
         self._get_data_from_file()
         self._set_cords()
 
@@ -79,22 +81,24 @@ class TraceCircuit():
 
     def lines_from_instruction(self, x_or_y: str, end_point: int):
         line_parts = []
-        print(end_point)
+        # print(end_point)
         for _ in range(end_point):
-            print(f"{_} : {end_point}: {x_or_y}")
+            # print(f"{_} : {end_point}: {x_or_y}")
             if x_or_y == 'x':
-                # line_parts.append[x_or_y,self._y]
                 self._y = _
                 self._set_cords()
             else:
                 self._x = _
                 self._set_cords()
+            line_parts.append(self._cords)
 
-    def get_list_of_points(self):
+        self._wires.append(line_parts)
+
+    def get_list_of_lines(self):
         point_set = []
         # print(self._file_line_1 == self._file_line_2)
         for instruction in self._file_data:
-            # print("start")
+            # print(instruction)
             self._process_intcode(instruction)
             point_set.append(self._cords)
             self._cords = [{"x": 0, "y": 0}]
@@ -123,7 +127,7 @@ class TraceCircuit():
 
 
 test = TraceCircuit()
-cord_set = test.get_list_of_points()
+cord_set = test.get_list_of_lines()
 # print(len(cord_set[1]))
 
 point_index = 0
@@ -146,5 +150,6 @@ best_match = 0
         #         if dist2 < best_match:
         #             best_match = dist2
     # point_index += 1
-print(best_match)
+# print(best_match)
+
 
